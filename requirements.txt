@@ -1,0 +1,2 @@
+external packages requirements for checking microservices script:
+# pip install requests
