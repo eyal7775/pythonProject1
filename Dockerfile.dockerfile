@@ -1,6 +1,6 @@
 FROM python:latest
 COPY requirements.txt ./
-RUN pip install requests
+RUN pip install -r requirements.txt
 WORKDIR /usr/app/src
 COPY main.py ./
 CMD ["python", "./main.py", "logfilename.txt", "10.0.2.42"]
