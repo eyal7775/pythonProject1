@@ -3,14 +3,13 @@ import requests # pip install requests
 import re
 import datetime
 import argparse
-import os.path
 
 parser = argparse.ArgumentParser(description='Enter log path and ip')
-log_file = parser.add_argument("log_file", help="name of output file", type=str)
-ip_server = parser.add_argument("ip_server", help="server is found data to actions", type=str)
-args = parser.parse_args()
-with open(args.log_file, "a+") as file:
-    url = "http://" + args.ip_server + ":999/system_check"
+log_file = parser.add_argument('-f', '--file', help="name of output file", type=str, required=True)
+ip_server = parser.add_argument('-e', '--env', help="server is found data to actions", type=str, required=True)
+args = vars(parser.parse_args())
+with open(args['file'], "a+") as file:
+    url = "http://" + args['env'] + ":999/system_check"
     services = requests.get(url)
     strings = re.findall('<h1 style="color:[A-Za-z ]+">[A-Za-z ]+:</h1>' ,services.text)
     for string in strings:
@@ -20,17 +19,4 @@ with open(args.log_file, "a+") as file:
             file.write(str(date) + "," + micro_service + ",Online\n")
         else:
             file.write(str(date) + "," + micro_service + ",Offline\n")
-
-# create a new repository on the command line:
-# echo "# pythonProject1" >> README.md
-# git init
-# git add README.md
-# git commit -m "first commit"
-# git branch -M main
-# git remote add origin https://github.com/eyal7775/pythonProject1.git
-# git push -u origin main
-
-# push an existing repository from the command line:
-# git remote add origin https://github.com/eyal7775/pythonProject1.git
-# git branch -M main
-# git push -u origin main
+    file.write("---\n")
