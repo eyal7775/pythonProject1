@@ -5,8 +5,8 @@ import datetime
 import argparse
 
 parser = argparse.ArgumentParser(description='Enter log path and ip')
-log_file = parser.add_argument('-f', '--file', help="name of output file", type=str, required=True)
-ip_server = parser.add_argument('-e', '--env', help="server is found data to actions", type=str, required=True)
+parser.add_argument('-f', '--file', help="name of output file", type=str, required=True)
+parser.add_argument('-e', '--env', help="server is found data to actions", type=str, required=True)
 args = vars(parser.parse_args())
 with open(args['file'], "a+") as file:
     url = "http://" + args['env'] + ":999/system_check"

@@ -9,5 +9,5 @@ COPY main.py ./
 ENV TZ="Asia/Jerusalem"
 ENTRYPOINT ["python", "./main.py"]
 
-# docker build -t test -f .\Dockerfile.dockerfile .
-# docker run -v $PWD/logfilename.txt:/usr/app/src/logfilename.txt test logfilename.txt 10.0.2.42
+# docker build . -t test -f Dockerfile.dockerfile
+# docker run -v $PWD/logfilename.txt:/usr/app/src/logfilename.txt test -f logfilename.txt -e 10.0.2.42
