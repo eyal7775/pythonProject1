@@ -20,3 +20,6 @@ with open(args['file'], "a+") as file:
         else:
             file.write(str(date) + "," + micro_service + ",Offline\n")
     file.write("---\n")
+
+# on windows: git add . ; git commit -m "name_commit" ; git push
+# on linux: git add . && git commit -m "name_commit" && git push

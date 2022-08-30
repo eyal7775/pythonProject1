@@ -1,0 +1,22 @@
+pipeline {
+    agent { label 'windows' }
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout([$class: 'GitSCM', branches: [[name: '*/dev1']], extensions: [], userRemoteConfigs: [[credentialsId: 'eyal_git', url: 'https://bitbucket.org/MDCLone/eyal-git']]])
+            }
+        }
+        stage('Build') {
+            steps {
+                git branch: 'dev1', credentialsId: 'eyal_git', url: 'https://bitbucket.org/MDCLone/eyal-git'
+                powershell 'python main.py'
+				powershell 'pylint main.py'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'the job has been tested'
+            }
+        }
+    }
+}
