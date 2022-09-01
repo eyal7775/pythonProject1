@@ -10,6 +10,8 @@ pipeline {
             steps {
                 git branch: 'dev1', credentialsId: 'job_2', url: 'https://github.com/eyal7775/pythonProject1.git'
                 powershell 'python main.py -f logfilename.txt -e 10.0.2.42'
+                powershell 'git add .'
+                powershell 'git commit -m "update commit"'
                 powershell 'git push -u origin dev1'
             }
         }
