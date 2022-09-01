@@ -26,11 +26,11 @@ with open(args['file'], "a+") as file:
 # on linux: git add . && git commit -m "name_commit" && git push
 
 # git remote set-url origin https://eyal777@bitbucket.org/MDCLone/eyal-git.git
-# git remote add origin_2 https://github.com/eyal7775/pythonProject1.git
-# git push -u origin_2 master
+# git remote add origin https://github.com/eyal7775/pythonProject1.git
+# git push -u origin master
 
 # fix failed: error: failed to push some refs to 'https://github.com/eyal7775/pythonProject1.git'
-# git pull --rebase origin_2 dev1
-# git push origin_2 dev1
+# git pull --rebase origin dev1
+# git push origin dev1
 
-# git remote add origin_2 https://github.com/eyal7775/pythonProject1.git
+# git remote add origin https://github.com/eyal7775/pythonProject1.git
