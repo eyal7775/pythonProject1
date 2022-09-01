@@ -3,12 +3,12 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/dev1']], extensions: [], userRemoteConfigs: [[credentialsId: 'eyal_git', url: 'https://bitbucket.org/MDCLone/eyal-git']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/dev1']], extensions: [], userRemoteConfigs: [[credentialsId: 'eyal_git', url: 'https://eyal777@bitbucket.org/MDCLone/eyal-git.git']]])
             }
         }
         stage('Build') {
             steps {
-                git branch: 'dev1', credentialsId: 'eyal_git', url: 'https://bitbucket.org/MDCLone/eyal-git'
+                git branch: 'dev1', credentialsId: 'eyal_git', url: 'https://eyal777@bitbucket.org/MDCLone/eyal-git.git'
                 powershell 'python main.py'
 				powershell 'pylint main.py'
             }
