@@ -9,7 +9,7 @@ pipeline {
         stage('Build') {
             steps {
                 git branch: 'dev1', credentialsId: 'job_2', url: 'https://github.com/eyal7775/pythonProject1.git'
-                powershell 'python main.py "logfilename.txt" "10.0.2.42"'
+                powershell 'python main.py -f logfilename.txt -e 10.0.2.42'
 				powershell 'pylint main.py'
             }
         }
