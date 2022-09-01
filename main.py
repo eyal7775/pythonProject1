@@ -23,3 +23,5 @@ with open(args['file'], "a+") as file:
 
 # on windows: git add . ; git commit -m "name_commit" ; git push
 # on linux: git add . && git commit -m "name_commit" && git push
+
+# git remote set-url origin https://eyal777@bitbucket.org/MDCLone/eyal-git.git
