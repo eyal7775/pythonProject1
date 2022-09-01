@@ -32,3 +32,5 @@ with open(args['file'], "a+") as file:
 # fix failed: error: failed to push some refs to 'https://github.com/eyal7775/pythonProject1.git'
 # git pull --rebase origin_2 dev1
 # git push origin_2 dev1
+
+# git remote add origin_2 https://github.com/eyal7775/pythonProject1.git
