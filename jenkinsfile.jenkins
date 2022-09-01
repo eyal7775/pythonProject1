@@ -10,7 +10,7 @@ pipeline {
             steps {
                 git branch: 'dev1', credentialsId: 'job_2', url: 'https://github.com/eyal7775/pythonProject1.git'
                 powershell 'python main.py -f logfilename.txt -e 10.0.2.42'
-                powershell 'git push -u origin dev1'
+                powershell 'git pull --rebase origin dev1 ; git push origin dev1'
             }
         }
         stage('Test') {
