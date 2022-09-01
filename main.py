@@ -22,6 +22,7 @@ with open(args['file'], "a+") as file:
     file.write("---\n")
 
 # on windows: git add . ; git commit -m "name_commit" ; git push
+# git add . ; git commit -m "name_commit_13" ; git push -u origin dev1
 # on linux: git add . && git commit -m "name_commit" && git push
 
 # git remote set-url origin https://eyal777@bitbucket.org/MDCLone/eyal-git.git
