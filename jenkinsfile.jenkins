@@ -12,7 +12,7 @@ pipeline {
                 powershell 'python main.py -f logfilename.txt -e 10.0.2.42'
                 powershell 'git add .'
                 powershell 'git commit -m "update commit"'
-                powershell 'git push eyal7775 dev1'
+                powershell 'git push origin_2 dev1'
             }
         }
         stage('Test') {
