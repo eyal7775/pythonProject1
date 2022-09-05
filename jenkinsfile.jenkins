@@ -1,3 +1,4 @@
+properties([parameters([choice(choices: '10.0.2.42', description: 'ip server for running', name: 'environment'), string(defaultValue: 'logfile', description: 'path for output file', name: 'file')])])
 pipeline {
     agent { label 'windows' }
     stages {
@@ -9,7 +10,7 @@ pipeline {
         stage('Build') {
             steps {
                 git branch: 'dev1', credentialsId: 'job_2', url: 'https://github.com/eyal7775/pythonProject1.git'
-                powershell 'python main.py -f logfilename.txt -e 10.0.2.42'
+                powershell 'python main.py -f ${params.file}.txt -e ${params.environment}'
                 powershell 'git add -f logfilename.txt ; git commit -m "my_commit" ; git push -u origin dev1'
             }
         }
