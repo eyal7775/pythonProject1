@@ -1,4 +1,4 @@
-properties([parameters([choice(choices: 'logfilename', name: 'FILE'), choice(choices: '10.0.2.42', name: 'ENV')])])
+properties([parameters([choice(choices: 'logfilename.txt', name: 'FILE'), choice(choices: '10.0.2.42', name: 'ENV')])])
 pipeline {
     agent { label 'windows' }
     stages {
@@ -10,8 +10,8 @@ pipeline {
         stage('Build') {
             steps {
                 git branch: 'dev1', credentialsId: 'job_2', url: 'https://github.com/eyal7775/pythonProject1.git'
-                powershell 'python main.py -h ${params.FILE}.txt ${params.ENV}'
-                powershell 'git add . ; git commit -m "my_commit" ; git push -u origin dev1'
+                powershell 'python main.py -h ${params.FILE} ${params.ENV}'
+                powershell 'git add ${params.FILE} ; git commit -m "my_commit" ; git push -u origin dev1'
             }
         }
         stage('Test') {
