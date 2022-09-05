@@ -1,4 +1,9 @@
-properties([parameters([choice(choices: ['logfilename.txt'], name: 'FILE'), choice(choices: ['10.0.2.42'], name: 'ENV')])])
+properties([
+    parameters([
+        choice(choices: ['logfilename.txt'], name: 'FILE'),
+        choice(choices: ['10.0.2.42'], name: 'ENV')
+    ])
+])
 pipeline {
     agent { label 'windows' }
     stages {
