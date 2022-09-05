@@ -14,7 +14,6 @@ pipeline {
         }
         stage('Build') {
             steps {
-                echo "${env.WORKSPACE}"
                 git branch: 'dev1', credentialsId: 'job_2', url: 'https://github.com/eyal7775/pythonProject1.git'
                 powershell "python main.py -f ${FILE}.txt -e ${params.ENV}"
                 powershell "cat ${env.WORKSPACE}/${FILE}.txt"
