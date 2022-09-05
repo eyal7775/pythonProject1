@@ -1,11 +1,9 @@
-/* properties([
+properties([
     parameters([
         choice(choices: ['logfilename.txt'], name: 'FILE'),
         choice(choices: ['10.0.2.42'], name: 'ENV')
     ])
-]) */
-def params = [string(name: 'FILE', value: "logfilename.txt"),
-              string(name: 'ENV', value: "10.0.2.42")]
+])
 pipeline {
     agent { label 'windows' }
     stages {
