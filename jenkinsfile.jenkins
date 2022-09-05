@@ -1,6 +1,6 @@
 properties([
     parameters([
-        string(defaultValue: 'logfilename.txt', name: 'FILE'),
+        string(defaultValue: 'logfilename', name: 'FILE'),
         choice(choices: ['10.0.2.42'], name: 'ENV')
     ])
 ])
@@ -16,8 +16,8 @@ pipeline {
             steps {
                 echo "${env.WORKSPACE}"
                 git branch: 'dev1', credentialsId: 'job_2', url: 'https://github.com/eyal7775/pythonProject1.git'
-                powershell "python main.py -f $FILE -e ${params.ENV}"
-                powershell "cat ${env.WORKSPACE}/$FILE"
+                powershell "python main.py -f $FILE.txt -e ${params.ENV}"
+                powershell "cat ${env.WORKSPACE}/$FILE.txt"
             }
         }
         stage('Test') {
