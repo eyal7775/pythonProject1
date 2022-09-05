@@ -16,9 +16,10 @@ pipeline {
             steps {
                 echo "$FILE"
                 echo "${params.ENV}"
+                echo "${env.WORKSPACE}"
                 git branch: 'dev1', credentialsId: 'job_2', url: 'https://github.com/eyal7775/pythonProject1.git'
                 powershell "python main.py -h -f $FILE -e ${params.ENV}"
-                powershell "cat pwd()/$FILE"
+                powershell "cat ${env.WORKSPACE}/$FILE"
             }
         }
         stage('Test') {
