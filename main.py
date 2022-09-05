@@ -10,6 +10,8 @@ parser.add_argument('-e', '--env', help="server is found data to actions", type=
 args = vars(parser.parse_args())
 with open(args['file'], "a+") as file:
     url = "http://" + args['env'] + ":999/system_check"
+    print(args['file'])
+    print(args['env'])
     services = requests.get(url)
     strings = re.findall('<h1 style="color:[A-Za-z ]+">[A-Za-z ]+:</h1>' ,services.text)
     for string in strings:
