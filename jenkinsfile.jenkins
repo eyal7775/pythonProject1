@@ -1,6 +1,6 @@
 properties([
     parameters([
-        choice(choices: ['logfilename.txt'], name: 'FILE'),
+        string(defaultValue: 'logfilename.txt', name: 'FILE'),
         choice(choices: ['10.0.2.42'], name: 'ENV')
     ])
 ])
