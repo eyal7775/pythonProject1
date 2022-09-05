@@ -1,4 +1,4 @@
-properties([parameters([string(defaultValue: 'logfile', description: 'path for output file', name: 'file'), choice(choices: '10.0.2.42', description: 'ip server for running', name: 'environment')])])
+properties([parameters([choice(choices: ['logfile'], name: 'file'), choice(choices: ['10.0.2.42'], name: 'environment')])])
 pipeline {
     agent { label 'windows' }
     stages {
