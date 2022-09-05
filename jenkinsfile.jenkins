@@ -18,7 +18,7 @@ pipeline {
                 echo "${params.ENV}"
                 git branch: 'dev1', credentialsId: 'job_2', url: 'https://github.com/eyal7775/pythonProject1.git'
                 powershell "python main.py -h -f $FILE -e ${params.ENV}"
-                cat "$FILE"
+                powershell "cat $FILE"
             }
         }
         stage('Test') {
