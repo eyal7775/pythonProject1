@@ -11,7 +11,7 @@ pipeline {
             steps {
                 git branch: 'dev1', credentialsId: 'job_2', url: 'https://github.com/eyal7775/pythonProject1.git'
                 powershell 'python main.py -h ${FILE}.txt ${ENV}'
-                powershell 'git add -f ${FILE}.txt ; git commit -m "my_commit" ; git push -u origin dev1'
+                powershell 'git add ${FILE}.txt ; git commit -m "my_commit" ; git push -u origin dev1'
             }
         }
         stage('Test') {
