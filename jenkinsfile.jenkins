@@ -1,7 +1,7 @@
 properties([
     parameters([
         string(defaultValue: '', name: 'FILE'),
-        choice(choices: ['10.0.2.42'], name: 'ENV')
+        choice(choices: ['10.0.2.42','10.0.2.30','10.0.2.41','10.0.2.53','10.0.2.66'], name: 'ENV')
     ])
 ])
 pipeline {
