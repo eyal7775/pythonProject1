@@ -10,7 +10,7 @@ pipeline {
         stage('Build') {
             steps {
                 git branch: 'dev1', credentialsId: 'job_2', url: 'https://github.com/eyal7775/pythonProject1.git'
-                powershell 'python main.py [-h] -f FILE -e ENV:String'
+                powershell 'python main.py -f FILE -e ENV:String'
                 powershell 'git add -f logfilename.txt ; git commit -m "my_commit" ; git push -u origin dev1'
             }
         }
