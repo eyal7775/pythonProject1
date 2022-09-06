@@ -19,7 +19,7 @@ with open(args['file'], "a+") as file:
             file.write(str(date) + "," + micro_service + ",Online\n")
         else:
             file.write(str(date) + "," + micro_service + ",Offline\n")
-    file.write("---\n")
+    file.write("---------------------------------------------------------------------\n")
 
 # on windows: git add . ; git commit -m "name_commit" ; git push
 # git add . ; git commit -m "name_commit" ; git push -u origin dev1
