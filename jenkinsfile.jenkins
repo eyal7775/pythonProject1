@@ -1,12 +1,12 @@
 def servers = [
-  "10.0.2.32": "LC",
-  "10.0.2.42": "QA",
-  "10.0.2.53": "SYNTH",
-  "10.0.2.61": "CDP",
+  "LC": "10.0.2.32",
+  "QA": "10.0.2.42",
+  "SYNTH": "10.0.2.53",
+  "CDP": "10.0.2.61",
 ]
 properties([
     parameters([
-        choice(choices: ["10.0.2.32","10.0.2.42","10.0.2.53","10.0.2.61"], name: 'ENV')
+        choice(choices: ["LC","QA","SYNTH","CDP"], name: 'ENV')
     ])
 ])
 pipeline {
@@ -20,8 +20,8 @@ pipeline {
         stage('Build') {
             steps {
                 git branch: 'dev1', credentialsId: 'job_2', url: 'https://github.com/eyal7775/pythonProject1.git'
-                powershell "python main.py -f " + servers["${params.ENV}"] + ".txt -e ${params.ENV}"
-                powershell "cat ${env.WORKSPACE}/" + servers["${params.ENV}"] + ".txt"
+                powershell "python main.py -f ${params.ENV}.txt -e " + servers[${params.ENV}]
+                powershell "cat ${env.WORKSPACE}/${params.ENV}.txt"
             }
         }
         stage('Test') {
