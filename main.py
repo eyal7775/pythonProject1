@@ -34,3 +34,7 @@ with open(args['file'], "a+") as file:
 # git push origin dev1
 
 # git remote add origin https://github.com/eyal7775/pythonProject1.git
+
+# https://10.0.2.66/mdclone-api/api/v1/system-check
+# http://10.0.2.42:999/system_check
+# http://10.0.2.53:999/system_check
