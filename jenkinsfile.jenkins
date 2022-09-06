@@ -1,3 +1,10 @@
+def servers = [
+  "k1": "10.0.2.42",
+  "LC": "10.0.2.30",
+  "QA": "10.0.2.41",
+  "SYNTH": "10.0.2.53",
+  "CDP": "10.0.2.66",
+]
 properties([
     parameters([
         string(defaultValue: '', name: 'FILE'),
