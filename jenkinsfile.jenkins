@@ -20,10 +20,10 @@ pipeline {
         }
         stage('Build') {
             steps {
-                echo servers["10.0.2.42"]
+                name = servers[${params.ENV}]
                 git branch: 'dev1', credentialsId: 'job_2', url: 'https://github.com/eyal7775/pythonProject1.git'
-                powershell "python main.py -f ${FILE}.txt -e ${params.ENV}"
-                powershell "cat ${env.WORKSPACE}/${FILE}.txt"
+                powershell "python main.py -f name.txt -e ${params.ENV}"
+                powershell "cat ${env.WORKSPACE}/name.txt"
             }
         }
         stage('Test') {
