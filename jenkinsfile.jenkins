@@ -6,7 +6,6 @@ def servers = [
 ]
 properties([
     parameters([
-        string(defaultValue: '', name: 'FILE'),
         choice(choices: ['10.0.2.32','10.0.2.42','10.0.2.53','10.0.2.61'], name: 'ENV')
     ])
 ])
