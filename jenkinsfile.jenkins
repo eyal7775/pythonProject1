@@ -20,9 +20,13 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    env.FILENAME = servers[${params.ENV}]
+                    try {
+                        env.FILENAME = servers[${params.ENV}]
+                    }
+                    catch(Exception e) {
+                        echo "File not found"
+                    }
                 }
-                echo "${env.FILENAME}"
                 git branch: 'dev1', credentialsId: 'job_2', url: 'https://github.com/eyal7775/pythonProject1.git'
                 powershell "python main.py -f ${env.FILENAME}.txt -e ${params.ENV}"
                 powershell "cat ${env.WORKSPACE}/${env.FILENAME}.txt"
