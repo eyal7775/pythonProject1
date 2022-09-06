@@ -11,6 +11,9 @@ properties([
 ])
 pipeline {
     agent { label 'windows' }
+    environment {
+        name = servers[${params.ENV}]
+    }
     stages {
         stage('Checkout') {
             steps {
@@ -19,7 +22,6 @@ pipeline {
         }
         stage('Build') {
             steps {
-                name = servers[${params.ENV}]
                 git branch: 'dev1', credentialsId: 'job_2', url: 'https://github.com/eyal7775/pythonProject1.git'
                 powershell "python main.py -f name.txt -e ${params.ENV}"
                 powershell "cat ${env.WORKSPACE}/name.txt"
