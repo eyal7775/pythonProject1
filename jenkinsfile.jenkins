@@ -4,11 +4,11 @@ def servers = [
   "SYNTH": "10.0.2.53",
   "CDP": "10.0.2.61",
 ]
-properties([
+/* properties([
     parameters([
         choice(choices: ["LC","QA","SYNTH","CDP"], name: 'ENV')
     ])
-])
+])*/
 pipeline {
     agent { label 'windows' }
     stages {
@@ -20,8 +20,12 @@ pipeline {
         stage('Build') {
             steps {
                 git branch: 'dev1', credentialsId: 'job_2', url: 'https://github.com/eyal7775/pythonProject1.git'
-                powershell "python main.py -f ${params.ENV}.txt -e " + servers["${params.ENV}"]
-                powershell "cat ${env.WORKSPACE}/${params.ENV}.txt"
+                for (elem in servers) {
+                    powershell "python main.py -f ${elem.key}.txt -e ${elem.value}"
+                    powershell "cat ${env.WORKSPACE}/${elem.key}.txt"
+                }
+                // powershell "python main.py -f ${params.ENV}.txt -e " + servers["${params.ENV}"]
+                // powershell "cat ${env.WORKSPACE}/${params.ENV}.txt"
             }
         }
         stage('Test') {
