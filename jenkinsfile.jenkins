@@ -4,11 +4,6 @@ def servers = [
   "SYNTH": "10.0.2.53",
   "CDP": "10.0.2.61",
 ]
-/* properties([
-    parameters([
-        choice(choices: ["LC","QA","SYNTH","CDP"], name: 'ENV')
-    ])
-]) */
 properties([
     parameters([
         extendedChoice(multiSelectDelimiter: ',', name: 'ENV', quoteValue: false, saveJSONParameterToFile: false, type: 'PT_CHECKBOX', value: 'LC,QA,SYNTH,CDP', visibleItemCount: 4)
