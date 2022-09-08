@@ -11,10 +11,6 @@ properties([
 ])
 pipeline {
     agent { label 'windows' }
-    parameters {
-        checkboxParameter(name: 'Platforms1', format: 'JSON',
-                pipelineSubmitContent: '{"CheckboxParameter": [{"key": "nt","value": "nt"},{"key": "linux","value": "linux"},{"key": "unix","value": "unix"}]}', description: '')
-    }
     stages {
         stage('Checkout') {
             steps {
