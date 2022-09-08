@@ -24,10 +24,16 @@ pipeline {
         }
         stage('Build') {
             steps {
-                echo "python main.py -f ${params.ENV}.txt -e " + servers["${params.ENV}"]"
                 git branch: 'dev1', credentialsId: 'job_2', url: 'https://github.com/eyal7775/pythonProject1.git'
-                powershell "python main.py -f ${params.ENV}.txt -e " + servers["${params.ENV}"]
-                powershell "cat ${env.WORKSPACE}/${params.ENV}.txt"
+                script {
+                    for (server in "${params.ENV}".split(',') {
+                        echo "server"
+                        powershell "python main.py -f server.txt -e " + servers["server"]
+                        powershell "cat ${env.WORKSPACE}/server.txt"
+                    }
+                }
+                //powershell "python main.py -f ${params.ENV}.txt -e " + servers["${params.ENV}"]
+                //powershell "cat ${env.WORKSPACE}/${params.ENV}.txt"
             }
         }
         stage('Test') {
