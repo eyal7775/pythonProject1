@@ -20,9 +20,11 @@ pipeline {
         stage('Build') {
             steps {
                 git branch: 'dev1', credentialsId: 'job_2', url: 'https://github.com/eyal7775/pythonProject1.git'
-                for (elem in servers) {
-                    powershell "python main.py -f ${elem.key}.txt -e ${elem.value}"
-                    powershell "cat ${env.WORKSPACE}/${elem.key}.txt"
+                script {
+                    for (elem in servers) {
+                        powershell "python main.py -f ${elem.key}.txt -e ${elem.value}"
+                        powershell "cat ${env.WORKSPACE}/${elem.key}.txt"
+                    }
                 }
                 // powershell "python main.py -f ${params.ENV}.txt -e " + servers["${params.ENV}"]
                 // powershell "cat ${env.WORKSPACE}/${params.ENV}.txt"
