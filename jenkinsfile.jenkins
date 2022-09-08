@@ -24,7 +24,7 @@ pipeline {
                     for (elem in servers) {
                         SHELL_SCRIPT = sh (
                             script: "python main.py -f ${elem.key}.txt -e ${elem.value} ;cat ${env.WORKSPACE}/${elem.key}.txt"
-                            returnStdout: true
+                            returnStatus: true
                         ).trim()
                         // powershell "python main.py -f ${elem.key}.txt -e ${elem.value}"
                         // powershell "cat ${env.WORKSPACE}/${elem.key}.txt"
