@@ -32,8 +32,6 @@ pipeline {
                         powershell "cat ${env.WORKSPACE}/" + server + ".txt"
                     }
                 }
-                //powershell "python main.py -f ${params.ENV}.txt -e " + servers["${params.ENV}"]
-                //powershell "cat ${env.WORKSPACE}/${params.ENV}.txt"
             }
         }
         stage('Test') {
