@@ -22,8 +22,12 @@ pipeline {
                 git branch: 'dev1', credentialsId: 'job_2', url: 'https://github.com/eyal7775/pythonProject1.git'
                 script {
                     for (elem in servers) {
-                        powershell "python main.py -f ${elem.key}.txt -e ${elem.value}"
-                        powershell "cat ${env.WORKSPACE}/${elem.key}.txt"
+                        SHELL_SCRIPT = sh (
+                            script: "python main.py -f ${elem.key}.txt -e ${elem.value} ;cat ${env.WORKSPACE}/${elem.key}.txt"
+                            returnStdout: true
+                        ).trim()
+                        // powershell "python main.py -f ${elem.key}.txt -e ${elem.value}"
+                        // powershell "cat ${env.WORKSPACE}/${elem.key}.txt"
                     }
                 }
                 // powershell "python main.py -f ${params.ENV}.txt -e " + servers["${params.ENV}"]
