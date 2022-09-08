@@ -4,9 +4,14 @@ def servers = [
   "SYNTH": "10.0.2.53",
   "CDP": "10.0.2.61",
 ]
-properties([
+/* properties([
     parameters([
         choice(choices: ["LC","QA","SYNTH","CDP"], name: 'ENV')
+    ])
+]) */
+properties([
+    parameters([
+        extendedChoice(multiSelectDelimiter: ',', name: 'ENV', quoteValue: false, saveJSONParameterToFile: false, type: 'PT_CHECKBOX', value: 'LC,QA,SYNTH,CDP', visibleItemCount: 4)
     ])
 ])
 pipeline {
@@ -19,7 +24,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                // echo %SERVERS%
+                echo "${params.ENV}"
                 git branch: 'dev1', credentialsId: 'job_2', url: 'https://github.com/eyal7775/pythonProject1.git'
                 powershell "python main.py -f ${params.ENV}.txt -e " + servers["${params.ENV}"]
                 powershell "cat ${env.WORKSPACE}/${params.ENV}.txt"
