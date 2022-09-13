@@ -8,7 +8,7 @@ parser = argparse.ArgumentParser(description='Enter log path and ip server')
 parser.add_argument('-f', '--file', help="name of output file", type=str, required=True)
 parser.add_argument('-e', '--env', help="server is found data to actions", type=str, required=True)
 args = vars(parser.parse_args())
-with open(args['file'], "a+") as file:
+with open(args['file'], "w+") as file:
     url = "http://" + args['env'] + ":999/system_check"
     services = requests.get(url)
     strings = re.findall('<h1 style="color:[A-Za-z ]+">[A-Za-z ]+:</h1>' ,services.text)
