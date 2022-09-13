@@ -25,6 +25,7 @@ pipeline {
                         echo server
                         powershell "python main.py -f " + server + ".txt -e " + servers[server]
                         powershell "cat ${env.WORKSPACE}/" + server + ".txt"
+                        powershell "rm ${env.WORKSPACE}/" + server + ".txt"
                     }
                 }
             }
