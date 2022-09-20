@@ -38,7 +38,7 @@ pipeline {
     }
     post {
         always {
-            step([$class: 'Publisher', reportFilenamePattern: '${env.WORKSPACE}/testng-results.xml'])
+            step([$class: 'Publisher', reportFilenamePattern: '**/testng-results.xml'])
         }
     }
 }
