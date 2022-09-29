@@ -20,16 +20,25 @@ pipeline {
         stage('Build') {
             steps {
                 git branch: 'dev1', credentialsId: 'job_2', url: 'https://github.com/eyal7775/pythonProject1.git'
-                echo server
-                powershell "python main.py -f " + server + ".txt -e " + servers[server]
-                powershell "cat ${env.WORKSPACE}/" + server + ".txt"
-                powershell "rm ${env.WORKSPACE}/" + server + ".txt"
+                script {
+                    for (server in "${params.ENV}".split(',')) {
+                        echo server
+                        powershell "python main.py -f " + server + ".txt -e " + servers[server]
+                        powershell "cat ${env.WORKSPACE}/" + server + ".txt"
+                        powershell "rm ${env.WORKSPACE}/" + server + ".txt"
+                    }
+                }
             }
         }
         stage('Test') {
             steps {
                 echo 'the job has been tested'
             }
+        }
+    }
+    post {
+        always {
+            step([$class: 'suite', reportFilenamePattern: '**/testng-results.xml'])
         }
     }
 }
