@@ -38,7 +38,7 @@ pipeline {
     }
     post {
         always {
-            echo 'i'm finished the running'
+            echo 'i am finished the running'
         }
         failure {
             echo "FAIL"
