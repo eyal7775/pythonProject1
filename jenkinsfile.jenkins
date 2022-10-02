@@ -32,13 +32,13 @@ pipeline {
         }
         stage('Test') {
             steps {
-                echo 'the job has been tested'
+                echo "the job has been tested"
             }
         }
     }
     post {
         always {
-            echo 'i am finished the running'
+            echo "i'm finished the running"
         }
         failure {
             echo "FAIL"
