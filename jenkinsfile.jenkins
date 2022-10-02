@@ -37,9 +37,9 @@ pipeline {
         }
     }
     post {
-        //always {
-        //    step([$class: 'suite', reportFilenamePattern: '**/testng-results.xml'])
-        //}
+        always {
+            echo 'i'm finished the running'
+        }
         failure {
             echo "FAIL"
         }
